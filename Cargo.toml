@@ -8,6 +8,13 @@ rust-version = "1.75.0"
 [workspace]
 resolver = "2"
 members = [
-    "dungeoneer-api",
+    "dungeoneer-api", "dungeoneer-tui",
     "dungeoneer-types",
+    "dungeoneer-tui",
 ]
+
+[workspace.lints.rust]
+rust_2018_idioms = "deny"
+
+[workspace.lints.clippy]
+unused_async = "deny"

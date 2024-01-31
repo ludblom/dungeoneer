@@ -11,3 +11,6 @@ rust-version.workspace = true
 workspace = true
 
 [dependencies]
+uuid = { version = "1.7.0", features = ["v4", "serde"] }
+chrono = "0.4.33"
+serde = { version = "1.0", features = ["derive"] }
