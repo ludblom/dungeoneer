@@ -1,6 +1,6 @@
 [package]
-name = "dungeoneer-api"
-description = "Interface to Dungeoneer"
+name = "dungeoneer-types"
+description = "Common data structures and types for the Dungeoneer application"
 authors.workspace = true
 repository.workspace = true
 license.workspace = true

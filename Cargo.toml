@@ -9,4 +9,5 @@ rust-version = "1.75.0"
 resolver = "2"
 members = [
     "dungeoneer-api",
+    "dungeoneer-types",
 ]
