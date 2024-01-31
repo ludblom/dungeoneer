@@ -1,0 +1,12 @@
+[workspace.package]
+authors = ["Ludvig Blomkvist <me@ludblom.net>"]
+repository = "https://github.com/ludblom/dungeoneer"
+license = "GPL-3.0"
+edition = "2021"
+rust-version = "1.75.0"
+
+[workspace]
+resolver = "2"
+members = [
+    "dungeoneer-api",
+]
