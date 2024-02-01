@@ -11,6 +11,7 @@ pub struct Armor {
     pub stealth_disadvantage: bool,
     pub cost: Option<Currency>,
     pub weight: Option<f64>,
+    pub equiped: bool,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -62,6 +63,7 @@ impl Armor {
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(5)),
                 weight: Some(8.0),
+                equiped: false,
             },
             ArmorList::Leather => Armor {
                 name: "Leather".to_string(),
@@ -71,6 +73,7 @@ impl Armor {
                 stealth_disadvantage: false,
                 cost: Some(Currency::gp_only(10)),
                 weight: Some(10.0),
+                equiped: false,
             },
             ArmorList::StuddedLeather => Armor {
                 name: "Studded Leather".to_string(),
@@ -80,6 +83,7 @@ impl Armor {
                 stealth_disadvantage: false,
                 cost: Some(Currency::gp_only(45)),
                 weight: Some(13.0),
+                equiped: false,
             },
             // Medium Armor
             ArmorList::Hide => Armor {
@@ -90,6 +94,7 @@ impl Armor {
                 stealth_disadvantage: false,
                 cost: Some(Currency::gp_only(10)),
                 weight: Some(12.0),
+                equiped: false,
             },
             ArmorList::ChainShirt => Armor {
                 name: "Chain Shirt".to_string(),
@@ -99,6 +104,7 @@ impl Armor {
                 stealth_disadvantage: false,
                 cost: Some(Currency::gp_only(50)),
                 weight: Some(20.0),
+                equiped: false,
             },
             ArmorList::ScaleMail => Armor {
                 name: "Scale Mail".to_string(),
@@ -108,6 +114,7 @@ impl Armor {
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(50)),
                 weight: Some(45.0),
+                equiped: false,
             },
             ArmorList::SpikedArmor => Armor {
                 name: "Spiked Armor".to_string(),
@@ -117,6 +124,7 @@ impl Armor {
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(75)),
                 weight: Some(45.0),
+                equiped: false,
             },
             ArmorList::Breastplate => Armor {
                 name: "Breastplate".to_string(),
@@ -126,6 +134,7 @@ impl Armor {
                 stealth_disadvantage: false,
                 cost: Some(Currency::gp_only(400)),
                 weight: Some(20.0),
+                equiped: false,
             },
             ArmorList::Halfplate => Armor {
                 name: "Halfplate".to_string(),
@@ -135,6 +144,7 @@ impl Armor {
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(750)),
                 weight: Some(40.0),
+                equiped: false,
             },
             // Heavy Armor
             ArmorList::RingMail => Armor {
@@ -145,6 +155,7 @@ impl Armor {
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(30)),
                 weight: Some(40.0),
+                equiped: false,
             },
             ArmorList::ChainMail => Armor {
                 name: "Chain Mail".to_string(),
@@ -154,6 +165,7 @@ impl Armor {
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(75)),
                 weight: Some(55.0),
+                equiped: false,
             },
             ArmorList::Splint => Armor {
                 name: "Splint".to_string(),
@@ -163,6 +175,7 @@ impl Armor {
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(200)),
                 weight: Some(60.0),
+                equiped: false,
             },
             ArmorList::Plate => Armor {
                 name: "Plate".to_string(),
@@ -172,6 +185,7 @@ impl Armor {
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(1500)),
                 weight: Some(65.0),
+                equiped: false,
             },
             // Shield
             ArmorList::Shield => Armor {
@@ -182,6 +196,7 @@ impl Armor {
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(1500)),
                 weight: Some(65.0),
+                equiped: false,
             }
         };
         armor
@@ -194,7 +209,8 @@ impl Armor {
         strength: Option<u64>,
         stealth_disadvantage: bool,
         cost: Option<Currency>,
-        weight: Option<f64>
+        weight: Option<f64>,
+        equiped: bool
     ) -> Armor {
         Armor {
             name,
@@ -203,7 +219,8 @@ impl Armor {
             strength,
             stealth_disadvantage,
             cost,
-            weight
+            weight,
+            equiped,
         }
     }
 }
