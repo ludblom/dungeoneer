@@ -1,4 +1,4 @@
-use dungeoneer_types::general::Dices;
+use dungeoneer_types::general::{Dices, AbilityRoll};
 use rand::Rng;
 
 pub fn roll_dices(dices: Dices) -> u64 {
@@ -37,7 +37,6 @@ pub fn roll_dices(dices: Dices) -> u64 {
         None => 0,
     };
 
-
     d_four + d_six + d_eight + d_ten + d_twelve + d_twenty + d_hundred
 }
 
@@ -67,4 +66,38 @@ pub fn roll_d20() -> u64 {
 
 pub fn roll_d100() -> u64 {
     rand::thread_rng().gen_range(1..101)
+}
+
+pub fn ability_roll() -> AbilityRoll {
+    let mut rolls: Vec<u64> = (0..4).map(|_| roll_d6()).collect();
+    let lowest: u64 = *rolls.iter().min().unwrap();
+    let mut i = 0;
+    while i < rolls.len() {
+        if rolls[i] == lowest {
+            rolls.remove(i);
+            break;
+        }
+        i += 1;
+    }
+    AbilityRoll {
+        chosen_roll: rolls.clone(),
+        sum: rolls.iter().sum(),
+        removed_roll: lowest,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use dungeoneer_types::general::AbilityRoll;
+
+    use super::ability_roll;
+
+    #[test]
+    fn test_ability_roll() {
+        for _ in 1..400 {
+            let roll: AbilityRoll = ability_roll();
+            assert!(roll.sum <= 18);
+            assert!(roll.chosen_roll.len() == 3);
+        }
+    }
 }

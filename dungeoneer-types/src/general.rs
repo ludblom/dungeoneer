@@ -14,10 +14,17 @@ pub struct Dices {
     pub d_four:    Option<u64>,
     pub d_six:     Option<u64>,
     pub d_eight:   Option<u64>,
-    pub d_hundred: Option<u64>,
     pub d_ten:     Option<u64>,
     pub d_twelve:  Option<u64>,
     pub d_twenty:  Option<u64>,
+    pub d_hundred: Option<u64>,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct AbilityRoll {
+    pub chosen_roll: Vec<u64>,
+    pub sum: u64,
+    pub removed_roll: u64,
 }
 
 impl Currency {
@@ -79,18 +86,6 @@ impl Dices {
         }
     }
 
-    pub fn only_hundred(dices: u64) -> Dices {
-        Dices {
-            d_four: None,
-            d_six: None,
-            d_eight: None,
-            d_hundred: Some(dices),
-            d_ten: None,
-            d_twelve: None,
-            d_twenty: None,
-        }
-    }
-
     pub fn only_ten(dices: u64) -> Dices {
         Dices {
             d_four: None,
@@ -124,6 +119,18 @@ impl Dices {
             d_ten: None,
             d_twelve: None,
             d_twenty: Some(dices),
+        }
+    }
+
+    pub fn only_hundred(dices: u64) -> Dices {
+        Dices {
+            d_four: None,
+            d_six: None,
+            d_eight: None,
+            d_hundred: Some(dices),
+            d_ten: None,
+            d_twelve: None,
+            d_twenty: None,
         }
     }
 }

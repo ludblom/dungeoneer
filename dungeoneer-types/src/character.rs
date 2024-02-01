@@ -7,7 +7,7 @@ pub struct Character {
     pub name: String,
     pub gender: Gender,
     pub level: u64,
-    pub class: Class,
+    pub class: Vec<Class>,
     pub race: Race,
     pub updated: String,
     pub created: String,
@@ -53,4 +53,24 @@ pub enum Race {
     HalfOrc,
     Human,
     Tiefling,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub enum Language {
+    Common,
+    Dwarvish,
+    Elvish,
+    Giant,
+    Gnomish,
+    Goblin,
+    Halfling,
+    Orc,
+    Abyssal,
+    Celestial,
+    Draconic,
+    DeepSpeech,
+    Infernal,
+    Primordial,
+    Sylvan,
+    Undercommon,
 }
