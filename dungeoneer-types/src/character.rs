@@ -1,6 +1,8 @@
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
+use crate::race::Race;
+
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Character {
     pub id: Uuid,
@@ -11,11 +13,6 @@ pub struct Character {
     pub race: Race,
     pub updated: String,
     pub created: String,
-}
-
-#[derive(Debug, Clone, Deserialize, Serialize)]
-pub struct RacialTraits {
-
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -40,19 +37,6 @@ pub enum Class {
     Warlock,
     Wizard,
     Artificer,
-}
-
-#[derive(Debug, Clone, Deserialize, Serialize)]
-pub enum Race {
-    Dragonborn,
-    Dwarf,
-    Elf,
-    Gnome,
-    HalfElf,
-    Halfling,
-    HalfOrc,
-    Human,
-    Tiefling,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
