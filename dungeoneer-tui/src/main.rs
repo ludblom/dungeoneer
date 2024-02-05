@@ -193,7 +193,7 @@ impl SelectedTab {
     fn block(&self) -> Block<'static> {
         Block::default()
             .borders(Borders::ALL)
-            .border_set(symbols::border::PROPORTIONAL_TALL)
+            .border_set(symbols::border::PLAIN)
             .padding(Padding::horizontal(1))
             .border_style(self.palette().c700)
     }
