@@ -115,8 +115,8 @@ impl SelectedTab {
 impl Widget for &App {
     fn render(self, area: Rect, buf: &mut Buffer) {
         use Constraint::*;
-        let vertical = Layout::vertical([Length(1), Min(0), Length(1)]);
-        let [header_area, inner_area, footer_area] = vertical.areas(area);
+        let vertical = Layout::vertical([Length(1), Min(0)]);
+        let [header_area, inner_area] = vertical.areas(area);
 
         let horizontal = Layout::horizontal([Min(0), Length(20)]);
         let [tabs_area, title_area] = horizontal.areas(header_area);
@@ -124,7 +124,6 @@ impl Widget for &App {
         self.render_title(title_area, buf);
         self.render_tabs(tabs_area, buf);
         self.selected_tab.render(inner_area, buf);
-        self.render_footer(footer_area, buf);
     }
 }
 
@@ -142,11 +141,6 @@ impl App {
             .select(selected_tab_index)
             .padding("", "")
             .divider(" ")
-            .render(area, buf);
-    }
-
-    fn render_footer(&self, area: Rect, buf: &mut Buffer) {
-        Line::raw("")
             .render(area, buf);
     }
 }
