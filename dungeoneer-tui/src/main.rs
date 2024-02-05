@@ -164,26 +164,28 @@ impl SelectedTab {
             .into()
     }
 
+    // TODO: Add Widgets here in seperate files to clean it all up a little bit
+    // https://docs.rs/ratatui/latest/ratatui/widgets/trait.Widget.html
     fn render_tab_overview(&self, area: Rect, buf: &mut Buffer) {
-        Paragraph::new("Hello, World!")
+        Paragraph::new("Overview")
             .block(self.block())
             .render(area, buf)
     }
 
     fn render_tab_attack(&self, area: Rect, buf: &mut Buffer) {
-        Paragraph::new("Welcome to the Ratatui tabs example!")
+        Paragraph::new("Attack")
             .block(self.block())
             .render(area, buf)
     }
 
     fn render_tab_inventory(&self, area: Rect, buf: &mut Buffer) {
-        Paragraph::new("Look! I'm different than others!")
+        Paragraph::new("Inventory")
             .block(self.block())
             .render(area, buf)
     }
 
     fn render_tab_description(&self, area: Rect, buf: &mut Buffer) {
-        Paragraph::new("I know, these are some basic changes. But I think you got the main idea.")
+        Paragraph::new("Description")
             .block(self.block())
             .render(area, buf)
     }
