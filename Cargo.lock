@@ -74,7 +74,11 @@ dependencies = [
 
 [[package]]
 name = "dungeoneer-tui"
-version = "0.1.0"
+version = "0.0.0"
+dependencies = [
+ "dungeoneer-api",
+ "dungeoneer-types",
+]
 
 [[package]]
 name = "dungeoneer-types"

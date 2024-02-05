@@ -8,9 +8,9 @@ rust-version = "1.75.0"
 [workspace]
 resolver = "2"
 members = [
-    "dungeoneer-api", "dungeoneer-tui",
-    "dungeoneer-types",
     "dungeoneer-tui",
+    "dungeoneer-api",
+    "dungeoneer-types",
 ]
 
 [workspace.lints.rust]
