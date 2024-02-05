@@ -25,13 +25,13 @@ enum AppState {
 enum SelectedTab {
     #[default]
     #[strum(to_string = "Overview")]
-    Tab1,
+    Overview,
     #[strum(to_string = "Attack")]
-    Tab2,
+    Attack,
     #[strum(to_string = "Inventory")]
-    Tab3,
+    Inventory,
     #[strum(to_string = "Description")]
-    Tab4,
+    Description,
 }
 
 fn main() -> Result<()> {
@@ -84,7 +84,9 @@ impl App {
     }
 
     pub fn tab_n(&mut self, tab: u8) {
-        self.selected_tab = self.selected_tab.switch_to_tab_n(tab);
+        if tab <= 3 {
+            self.selected_tab = self.selected_tab.switch_to_tab_n(tab);
+        }
     }
 
     pub fn quit(&mut self) {
@@ -93,14 +95,12 @@ impl App {
 }
 
 impl SelectedTab {
-    /// Get the previous tab, if there is no previous tab return the current tab.
     fn previous(&self) -> Self {
         let current_index: usize = *self as usize;
         let previous_index = current_index.saturating_sub(1);
         Self::from_repr(previous_index).unwrap_or(*self)
     }
 
-    /// Get the next tab, if there is no next tab return the current tab.
     fn next(&self) -> Self {
         let current_index = *self as usize;
         let next_index = current_index.saturating_add(1);
@@ -147,18 +147,16 @@ impl App {
 
 impl Widget for SelectedTab {
     fn render(self, area: Rect, buf: &mut Buffer) {
-        // in a real app these might be separate widgets
         match self {
-            SelectedTab::Tab1 => self.render_tab0(area, buf),
-            SelectedTab::Tab2 => self.render_tab1(area, buf),
-            SelectedTab::Tab3 => self.render_tab2(area, buf),
-            SelectedTab::Tab4 => self.render_tab3(area, buf),
+            SelectedTab::Overview    => self.render_tab_overview(area, buf),
+            SelectedTab::Attack      => self.render_tab_attack(area, buf),
+            SelectedTab::Inventory   => self.render_tab_inventory(area, buf),
+            SelectedTab::Description => self.render_tab_description(area, buf),
         }
     }
 }
 
 impl SelectedTab {
-    /// Return tab's name as a styled `Line`
     fn title(&self) -> Line<'static> {
         format!("  {self}  ")
             .fg(tailwind::SLATE.c200)
@@ -166,31 +164,30 @@ impl SelectedTab {
             .into()
     }
 
-    fn render_tab0(&self, area: Rect, buf: &mut Buffer) {
+    fn render_tab_overview(&self, area: Rect, buf: &mut Buffer) {
         Paragraph::new("Hello, World!")
             .block(self.block())
             .render(area, buf)
     }
 
-    fn render_tab1(&self, area: Rect, buf: &mut Buffer) {
+    fn render_tab_attack(&self, area: Rect, buf: &mut Buffer) {
         Paragraph::new("Welcome to the Ratatui tabs example!")
             .block(self.block())
             .render(area, buf)
     }
 
-    fn render_tab2(&self, area: Rect, buf: &mut Buffer) {
+    fn render_tab_inventory(&self, area: Rect, buf: &mut Buffer) {
         Paragraph::new("Look! I'm different than others!")
             .block(self.block())
             .render(area, buf)
     }
 
-    fn render_tab3(&self, area: Rect, buf: &mut Buffer) {
+    fn render_tab_description(&self, area: Rect, buf: &mut Buffer) {
         Paragraph::new("I know, these are some basic changes. But I think you got the main idea.")
             .block(self.block())
             .render(area, buf)
     }
 
-    /// A block surrounding the tab's content
     fn block(&self) -> Block<'static> {
         Block::default()
             .borders(Borders::ALL)
@@ -201,10 +198,10 @@ impl SelectedTab {
 
     fn palette(&self) -> tailwind::Palette {
         match self {
-            SelectedTab::Tab1 => tailwind::NEUTRAL,
-            SelectedTab::Tab2 => tailwind::NEUTRAL,
-            SelectedTab::Tab3 => tailwind::NEUTRAL,
-            SelectedTab::Tab4 => tailwind::NEUTRAL,
+            SelectedTab::Overview    => tailwind::NEUTRAL,
+            SelectedTab::Attack      => tailwind::NEUTRAL,
+            SelectedTab::Inventory   => tailwind::NEUTRAL,
+            SelectedTab::Description => tailwind::NEUTRAL,
         }
     }
 }
