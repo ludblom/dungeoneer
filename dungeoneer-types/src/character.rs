@@ -19,7 +19,6 @@ pub struct Character {
     pub total_health: i64,
     pub temporary_health: i64,
     pub spell_slots: Option<Vec<SpellSlots>>,
-    pub updated: String,
     pub created: String,
 }
 
@@ -96,7 +95,6 @@ impl Character {
             total_health: health,
             temporary_health: 0,
             spell_slots,
-            updated: Local::now().to_string(),
             created: Local::now().to_string(),
         }
     }

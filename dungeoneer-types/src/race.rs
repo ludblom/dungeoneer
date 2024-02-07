@@ -1,9 +1,11 @@
+use std::collections::HashMap;
+
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Race {
     pub race_selection: RaceSelection,
-    pub ability_score_increase: Vec<(RacialAbilityScore, i64)>,
+    pub ability_score_increase: HashMap<String, i64>,
     pub resilience: Vec<Resilience>,
     pub proficiency: Vec<Proficiency>,
     pub unique: Vec<Unique>,
@@ -23,7 +25,7 @@ pub enum RaceSelection {
     Dragonborn, // TODO: Not implemented
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize, strum_macros::Display)]
 pub enum RacialAbilityScore {
     Strength,
     Dexterity,
@@ -59,10 +61,10 @@ impl Race {
             RaceSelection::HillDwarf => {
                 let race = Race {
                     race_selection,
-                    ability_score_increase: vec![
-                        (RacialAbilityScore::Constitution, 2),
-                        (RacialAbilityScore::Wisdom, 1),
-                    ],
+                    ability_score_increase: HashMap::from([
+                        (RacialAbilityScore::Constitution.to_string(), 2),
+                        (RacialAbilityScore::Wisdom.to_string(), 1),
+                    ]),
                     resilience: vec![
                         Resilience::Poison,
                     ],
@@ -78,10 +80,10 @@ impl Race {
             RaceSelection::MountainDwarf => {
                 let race = Race {
                     race_selection,
-                    ability_score_increase: vec![
-                        (RacialAbilityScore::Constitution, 2),
-                        (RacialAbilityScore::Strength, 2),
-                    ],
+                    ability_score_increase: HashMap::from([
+                        (RacialAbilityScore::Constitution.to_string(), 2),
+                        (RacialAbilityScore::Strength.to_string(), 2),
+                    ]),
                     resilience: vec![
                         Resilience::Poison,
                     ],
