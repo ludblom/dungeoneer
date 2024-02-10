@@ -26,7 +26,7 @@ pub enum RaceSelection {
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, strum_macros::Display)]
-pub enum RacialAbilityScore {
+pub enum AbilityScoreOptions {
     Strength,
     Dexterity,
     Constitution,
@@ -62,8 +62,8 @@ impl Race {
                 let race = Race {
                     race_selection,
                     ability_score_increase: HashMap::from([
-                        (RacialAbilityScore::Constitution.to_string(), 2),
-                        (RacialAbilityScore::Wisdom.to_string(), 1),
+                        (AbilityScoreOptions::Constitution.to_string(), 2),
+                        (AbilityScoreOptions::Wisdom.to_string(), 1),
                     ]),
                     resilience: vec![
                         Resilience::Poison,
@@ -81,8 +81,8 @@ impl Race {
                 let race = Race {
                     race_selection,
                     ability_score_increase: HashMap::from([
-                        (RacialAbilityScore::Constitution.to_string(), 2),
-                        (RacialAbilityScore::Strength.to_string(), 2),
+                        (AbilityScoreOptions::Constitution.to_string(), 2),
+                        (AbilityScoreOptions::Strength.to_string(), 2),
                     ]),
                     resilience: vec![
                         Resilience::Poison,
