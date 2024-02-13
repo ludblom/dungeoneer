@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::race::Race;
-use crate::class::{Class, SpellSlots};
+use crate::class::Class;
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Character {
@@ -18,7 +18,6 @@ pub struct Character {
     pub health: i64,
     pub total_health: i64,
     pub temporary_health: i64,
-    pub spell_slots: Option<Vec<SpellSlots>>,
     pub created: String,
 }
 
@@ -81,7 +80,6 @@ impl Character {
         ability_score: AbilityScore,
     ) -> Character {
         let health = Character::calculate_total_health(&class, &ability_score);
-        let spell_slots = Character::get_base_spell_slots(&class);
         Character {
             id: Uuid::new_v4(),
             name,
@@ -94,16 +92,15 @@ impl Character {
             health,
             total_health: health,
             temporary_health: 0,
-            spell_slots,
             created: Local::now().to_string(),
         }
     }
 
     pub fn long_rest(&mut self) {
         self.health = self.total_health;
-        self.spell_slots.as_mut().map(|spell_slots| {
-            spell_slots.iter_mut().for_each(|s| s.used = 0);
-        });
+        // self.spell_slots.as_mut().map(|spell_slots| {
+        //     spell_slots.iter_mut().for_each(|s| s.used = 0);
+        // });
     }
 
     fn calculate_total_health(class: &Class, ability_score: &AbilityScore) -> i64 {
@@ -113,16 +110,5 @@ impl Character {
             _ => todo!("Not defined"),
         };
         class_health + ability_score.constitution.modifier
-    }
-
-    fn get_base_spell_slots(class: &Class) -> Option<Vec<SpellSlots>> {
-        match class {
-            Class::Sorcerer => Some(vec![
-                SpellSlots { level: 0, available: 4, used: 0 },
-                SpellSlots { level: 1, available: 2, used: 0 },
-            ]),
-            Class::Barbarian => None,
-            _ => todo!("Not implemented."),
-        }
     }
 }
