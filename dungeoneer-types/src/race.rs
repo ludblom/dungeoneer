@@ -16,7 +16,6 @@ pub enum RaceSelection {
     HillDwarf,
     MountainDwarf,
     HalfElf, // TODO: Not implemented
-    Elf, // TODO: Not implemented
     Gnome, // TODO: Not implemented
     Halfling, // TODO: Not implemented
     HalfOrc, // TODO: Not implemented

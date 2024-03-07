@@ -11,6 +11,7 @@ pub fn new_character(
     proficiency: Proficiency,
     ability_score: AbilityScore
 ) -> Character {
+    let ability_score = set_racial_abilities(&race_selection, ability_score);
     let race: Race = {
         let proficiency = proficiency;
         match race_selection {
@@ -55,6 +56,19 @@ pub fn new_character(
             _ => todo!("Not implemented."),
         }
     };
-    let character = Character::new(name, gender, languages, class, race, ability_score);
-    character
+    Character::new(name, gender, languages, class, race, ability_score)
+}
+
+fn set_racial_abilities(race_selection: &RaceSelection, ability_score: AbilityScore) -> AbilityScore {
+    let mut ability_score_racial = ability_score.clone();
+    match *race_selection {
+        RaceSelection::HillDwarf => {
+            ability_score_racial.wisdom.racial_bonus += 1;
+        },
+        RaceSelection::MountainDwarf => {
+            ability_score_racial.strength.racial_bonus += 2;
+        },
+        _ => todo!("Not implemented."),
+    };
+    ability_score_racial
 }
