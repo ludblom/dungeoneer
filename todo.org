@@ -1,0 +1,56 @@
+* What to do
+** Types
+- [-] Armor [1/3]
+  - [ ] Tests
+  - [X] Basic structure
+  - [ ] Add all armor types
+  - [ ] Add a way to add your own armor
+- [ ] Character [0/2]
+  - [ ] Tests
+  - [ ] Move functions to API, do not fit in Types
+  - [ ] Maybe more...
+- [-] Equipment [3/5]
+  - [ ] Tests
+  - [X] Gear
+  - [X] Objects
+  - [X] Equipment
+  - [ ] Add a way to add your own armor
+  - [ ] Maybe more...
+- [-] General [2/3]
+  - [ ] Tests
+  - [X] Currency
+  - [X] Dices
+  - [ ] Add a way to add your own stuff
+  - [ ] Maybe more...
+- Race [1/3]
+  - [ ] Tests
+  - [ ] Append until every race is done
+  - [ ] Add a way to make your own race
+  - [X] Dwarf [2/2]
+    - [X] Hill-Dwarf
+    - [X] Mountain-Dwarf
+- [ ] Weapon
+  - [ ] Tests
+  - [ ] Finish the weapons list
+  - [ ] Add a way to add your own weapons
+** API
+- [-] Character [0/3]
+  - [ ] Tests
+  - [-] func: new_character
+    - [-] Add all races
+      - [-] Dwarf
+        - [X] Hill-Dwarf
+        - [X] Mountain-Dwarf
+        - [ ] The rest...
+  - [-] func: set_racial_abilities [2/3]
+    - [X] Hill-Dwarf
+    - [X] Mountain-Dwarf
+    - [ ] The rest races...
+- [ ] Class [0/1]
+  - [ ] Nothing implemented
+- [-] Dices [1/4]
+  - [X] Able to make all kinds of rolls
+  - [ ] Any other kind of rolls...
+  - [ ] Tests
+** TUI
+- [ ] Get anything to work the way I want at all..
