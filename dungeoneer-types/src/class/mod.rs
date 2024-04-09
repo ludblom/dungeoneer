@@ -3,8 +3,8 @@ use serde::{Deserialize, Serialize};
 pub mod sorcerer;
 
 // TODO Continue...
-pub trait SpellCaster {
-    fn cast_spell(&self) -> String;
+pub trait SpellCaster<T> {
+    fn cast_spell(&self) -> Result<(), T>;
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]

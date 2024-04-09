@@ -11,9 +11,9 @@ pub struct Sorcerer {
     pub spells: Vec<Spell>
 }
 
-impl SpellCaster for Sorcerer {
-    fn cast_spell(&self) -> String {
-        format!("Casting spell...")
+impl SpellCaster<&'static str> for Sorcerer {
+    fn cast_spell(&self) -> Result<(), &'static str> {
+        Err("Test")
     }
 }
 
