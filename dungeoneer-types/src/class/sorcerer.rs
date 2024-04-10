@@ -11,9 +11,21 @@ pub struct Sorcerer {
     pub spells: Vec<Spell>
 }
 
-impl SpellCaster<&'static str> for Sorcerer {
-    fn cast_spell(&self) -> Result<(), &'static str> {
-        Err("Test")
+impl SpellCaster<String> for Sorcerer {
+    fn cast_spell(&mut self, spell_level: usize, cost: u8) -> Result<(), String> {
+        if self.spell_slots.len() == 0 || self.spell_slots.len() < spell_level+1 {
+            return Err(format!("You do not have a level {} spell-slot.", spell_level));
+        }
+
+        let spell_slot = &mut self.spell_slots[spell_level];
+
+        if spell_slot.available < cost {
+            return Err(format!("You have {} free spell-slots, and that spell costs {}.", spell_slot.available, cost));
+        }
+
+        spell_slot.update_spell_slots(cost);
+
+        Ok(())
     }
 }
 
@@ -34,43 +46,49 @@ pub struct Hit {
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct SpellSlots {
-    pub level: u8,
     pub available: u8,
-    pub used: u8,
+    pub total: u8,
+}
+
+impl SpellSlots {
+    pub fn update_spell_slots(&mut self, cost: u8) {
+        self.available -= cost;
+    }
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct SorceryPoints {
     pub available: u8,
-    pub used: u8,
+    pub total: u8,
 }
-
-// pub fn get_base_spell_slots(class: &Class) -> Option<Vec<SpellSlots>> {
-//     match class {
-//         Class::Sorcerer => Some(vec![
-//             SpellSlots { level: 0, available: 4, used: 0 },
-//             SpellSlots { level: 1, available: 2, used: 0 },
-//         ]),
-//         Class::Barbarian => None,
-//         _ => todo!("Not implemented."),
-//     }
-// }
 
 #[cfg(test)]
 mod tests {
-    use crate::race::AbilityScoreOptions;
-    use crate::class::SpellCaster;
-
+    use crate::{race::AbilityScoreOptions, class::SpellCaster};
     use super::{Sorcerer, SpellSlots, Spell, Hit};
 
     #[test]
-    fn cast_spell_test() {
-        let sorcer: Sorcerer = Sorcerer {
+    fn cast_spell_decrement_test() {
+        let mut sorcer: Sorcerer = Sorcerer {
             class_level: 1,
-            spell_slots: vec![SpellSlots { level: 1, available: 3, used: 0 }],
+            spell_slots: vec![SpellSlots { available: 3, total: 3 }],
             sorcery_points: None,
             spells: vec![ Spell { range: 20, hit: Hit { dc: Some((AbilityScoreOptions::Charisma, 15)), hit: None } } ]
         };
-        println!("{}", sorcer.cast_spell());
+
+        let _ = sorcer.cast_spell(1, 1);
+        assert_eq!(sorcer.spell_slots[0].available, 2);
+
+        let _ = sorcer.cast_spell(1, 1);
+        assert_eq!(sorcer.spell_slots[0].available, 1);
+
+        let _ = sorcer.cast_spell(1, 1);
+        assert_eq!(sorcer.spell_slots[0].available, 0);
+
+        let res = sorcer.cast_spell(1, 1);
+        match res {
+            Ok(_) => assert!(false),
+            Err(_) => assert!(true),
+        }
     }
 }
