@@ -11,10 +11,10 @@ rust-version.workspace = true
 workspace = true
 
 [dependencies]
-crossterm = "0.27.0"
+crossterm = "0.28.1"
 ratatui = "0.28.0"
-color-eyre = "0.6.2"
-strum = "0.26.1"
+color-eyre = "0.6.3"
+strum = "0.26.3"
 
 dungeoneer-api = { path = "../dungeoneer-api" }
 dungeoneer-types = { path = "../dungeoneer-types" }
