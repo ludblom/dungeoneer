@@ -33,6 +33,8 @@
   - [ ] Tests
   - [ ] Finish the weapons list
   - [ ] Add a way to add your own weapons
+- Character [0/1]
+  - [ ] Prio: AbilityScore implementation. Will enable us to write Character tests
 ** API
 - [-] Character [0/3]
   - [ ] Tests
