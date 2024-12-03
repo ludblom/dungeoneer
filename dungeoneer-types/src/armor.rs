@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::general::Currency;
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Armor {
     pub name: String,
     pub armor_type: ArmorType,
@@ -14,7 +14,7 @@ pub struct Armor {
     pub equiped: bool,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub enum ArmorType {
     LightArmor,
     MediumArmor,
@@ -22,7 +22,7 @@ pub enum ArmorType {
     Shield,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct ArmorClass {
     pub default: u64,
     pub dex_modifier: bool,

@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::general::{Currency, Dices};
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Weapon {
     pub name: String,
     pub attack_type: Option<AttackType>,
@@ -14,13 +14,13 @@ pub struct Weapon {
     pub notes: Option<String>,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub enum AttackType {
     Melee,
     Ranged,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub enum PhysicalDamage {
     Acid,
     Bludgeoning,

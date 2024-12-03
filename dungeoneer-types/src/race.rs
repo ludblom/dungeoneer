@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Race {
     pub race_selection: RaceSelection,
     pub ability_score_increase: HashMap<String, i64>,
@@ -11,7 +11,7 @@ pub struct Race {
     pub unique: Vec<Unique>,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub enum RaceSelection {
     HillDwarf,
     MountainDwarf,
@@ -24,7 +24,7 @@ pub enum RaceSelection {
     Dragonborn, // TODO: Not implemented
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize, strum_macros::Display)]
+#[derive(Debug, Deserialize, Serialize, strum_macros::Display)]
 pub enum AbilityScoreOptions {
     Strength,
     Dexterity,
@@ -34,12 +34,12 @@ pub enum AbilityScoreOptions {
     Charisma,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub enum Resilience {
     Poison,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub enum Proficiency {
     SmithsTools,
     BrewersSupplies,
@@ -49,7 +49,7 @@ pub enum Proficiency {
     HeavyArmor,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub enum Unique {
     DwarvenToughness,
 }

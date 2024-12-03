@@ -5,7 +5,7 @@ use uuid::Uuid;
 use crate::race::Race;
 use crate::class::Class;
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Character {
     pub id: Uuid,
     pub name: String,
@@ -21,14 +21,14 @@ pub struct Character {
     pub created: String,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub enum Gender {
     Male,
     Female,
     Unknown,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub enum Language {
     Common,
     Dwarvish,

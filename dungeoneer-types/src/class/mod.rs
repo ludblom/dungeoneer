@@ -7,7 +7,7 @@ pub trait SpellCaster<T> {
     fn cast_spell(&mut self, spell_level: usize, number_of_slots: u8) -> Result<(), T>;
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub enum Class {
     Barbarian,
     Bard,

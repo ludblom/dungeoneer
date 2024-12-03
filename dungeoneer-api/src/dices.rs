@@ -1,7 +1,7 @@
 use dungeoneer_types::general::{Dices, AbilityRoll};
 use rand::Rng;
 
-pub fn roll_dices(dices: Dices) -> u64 {
+pub fn roll_dices(dices: Dices) -> i64 {
     let d_four = match dices.d_four {
         Some(n) => (0..n).map(|_| roll_d4()).sum(),
         None => 0,
@@ -40,37 +40,37 @@ pub fn roll_dices(dices: Dices) -> u64 {
     d_four + d_six + d_eight + d_ten + d_twelve + d_twenty + d_hundred
 }
 
-pub fn roll_d4() -> u64 {
+pub fn roll_d4() -> i64 {
     rand::thread_rng().gen_range(1..5)
 }
 
-pub fn roll_d6() -> u64 {
+pub fn roll_d6() -> i64 {
     rand::thread_rng().gen_range(1..7)
 }
 
-pub fn roll_d8() -> u64 {
+pub fn roll_d8() -> i64 {
     rand::thread_rng().gen_range(1..9)
 }
 
-pub fn roll_d10() -> u64 {
+pub fn roll_d10() -> i64 {
     rand::thread_rng().gen_range(1..11)
 }
 
-pub fn roll_d12() -> u64 {
+pub fn roll_d12() -> i64 {
     rand::thread_rng().gen_range(1..13)
 }
 
-pub fn roll_d20() -> u64 {
+pub fn roll_d20() -> i64 {
     rand::thread_rng().gen_range(1..21)
 }
 
-pub fn roll_d100() -> u64 {
+pub fn roll_d100() -> i64 {
     rand::thread_rng().gen_range(1..101)
 }
 
 pub fn ability_roll() -> AbilityRoll {
-    let mut rolls: Vec<u64> = (0..4).map(|_| roll_d6()).collect();
-    let lowest: u64 = *rolls.iter().min().unwrap();
+    let mut rolls: Vec<i64> = (0..4).map(|_| roll_d6()).collect();
+    let lowest: i64 = *rolls.iter().min().unwrap();
     let mut i = 0;
     while i < rolls.len() {
         if rolls[i] == lowest {

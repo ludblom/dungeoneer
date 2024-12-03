@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::{weapon::Weapon, general::Currency};
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Equipment {
     pub main_hand: Option<Weapon>,
     pub off_hand: Option<Weapon>,
@@ -14,13 +14,13 @@ pub struct Equipment {
     pub gear_bag: Vec<Gear>,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Gear {
     pub name: String,
     pub ac_modifier: Option<i64>,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Object {
     pub name: String,
     pub cost: Option<Currency>,
@@ -28,7 +28,7 @@ pub struct Object {
     pub notes: String,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Bag {
     pub weapons: Vec<Weapon>,
     pub gear: Vec<Gear>,

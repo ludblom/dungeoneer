@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use crate::{general::Dices, race::AbilityScoreOptions};
 use crate::class::SpellCaster;
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Sorcerer {
     pub class_level: u32,
     pub spell_slots: Vec<SpellSlots>,
@@ -13,23 +13,24 @@ pub struct Sorcerer {
 
 impl SpellCaster<String> for Sorcerer {
     fn cast_spell(&mut self, spell_level: usize, cost: u8) -> Result<(), String> {
-        if self.spell_slots.len() == 0 || self.spell_slots.len() < spell_level+1 {
+        if self.spell_slots.len() < spell_level {
             return Err(format!("You do not have a level {} spell-slot.", spell_level));
         }
 
-        let spell_slot = &mut self.spell_slots[spell_level];
-
-        if spell_slot.available < cost {
-            return Err(format!("You have {} free spell-slots, and that spell costs {}.", spell_slot.available, cost));
+        if self.spell_slots[spell_level-1].available < cost {
+            return Err(format!(
+                "You have {} free spell-slots, and that spell costs {}.",
+                self.spell_slots[spell_level-1].available, cost
+            ));
         }
 
-        spell_slot.update_spell_slots(cost);
+        self.spell_slots[spell_level-1].update_spell_slots(cost);
 
         Ok(())
     }
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Spell {
     pub range: u64,
     pub hit: Hit,
@@ -38,13 +39,13 @@ pub struct Spell {
 type Threshold = i64;
 type Modifier = i64;
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Hit {
     pub dc: Option<(AbilityScoreOptions, Threshold)>,
     pub hit: Option<(Modifier, Dices)>,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct SpellSlots {
     pub available: u8,
     pub total: u8,
@@ -56,7 +57,7 @@ impl SpellSlots {
     }
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct SorceryPoints {
     pub available: u8,
     pub total: u8,
