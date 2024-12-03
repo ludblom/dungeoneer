@@ -1,4 +1,3 @@
-use std::{io, io::stdout};
 use color_eyre::{config::HookBuilder, Result};
 use crossterm::{
     event::{self, Event, KeyCode, KeyEventKind},
@@ -6,6 +5,7 @@ use crossterm::{
     ExecutableCommand,
 };
 use ratatui::{prelude::*, style::palette::tailwind, widgets::*};
+use std::{io, io::stdout};
 use strum::{Display, EnumIter, FromRepr, IntoEnumIterator};
 
 #[derive(Default)]
@@ -62,12 +62,12 @@ impl App {
                 use KeyCode::*;
                 match key.code {
                     Char('l') | Right => self.next_tab(),
-                    Char('h') | Left  => self.previous_tab(),
-                    Char('q') | Esc   => self.quit(),
-                    Char('1')         => self.tab_n(0),
-                    Char('2')         => self.tab_n(1),
-                    Char('3')         => self.tab_n(2),
-                    Char('4')         => self.tab_n(3),
+                    Char('h') | Left => self.previous_tab(),
+                    Char('q') | Esc => self.quit(),
+                    Char('1') => self.tab_n(0),
+                    Char('2') => self.tab_n(1),
+                    Char('3') => self.tab_n(2),
+                    Char('4') => self.tab_n(3),
                     _ => {}
                 }
             }
@@ -148,9 +148,9 @@ impl App {
 impl Widget for SelectedTab {
     fn render(self, area: Rect, buf: &mut Buffer) {
         match self {
-            SelectedTab::Overview    => self.render_tab_overview(area, buf),
-            SelectedTab::Attack      => self.render_tab_attack(area, buf),
-            SelectedTab::Inventory   => self.render_tab_inventory(area, buf),
+            SelectedTab::Overview => self.render_tab_overview(area, buf),
+            SelectedTab::Attack => self.render_tab_attack(area, buf),
+            SelectedTab::Inventory => self.render_tab_inventory(area, buf),
             SelectedTab::Description => self.render_tab_description(area, buf),
         }
     }
@@ -200,9 +200,9 @@ impl SelectedTab {
 
     fn palette(&self) -> tailwind::Palette {
         match self {
-            SelectedTab::Overview    => tailwind::NEUTRAL,
-            SelectedTab::Attack      => tailwind::NEUTRAL,
-            SelectedTab::Inventory   => tailwind::NEUTRAL,
+            SelectedTab::Overview => tailwind::NEUTRAL,
+            SelectedTab::Attack => tailwind::NEUTRAL,
+            SelectedTab::Inventory => tailwind::NEUTRAL,
             SelectedTab::Description => tailwind::NEUTRAL,
         }
     }

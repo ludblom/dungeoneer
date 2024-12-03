@@ -15,12 +15,12 @@ pub struct Race {
 pub enum RaceSelection {
     HillDwarf,
     MountainDwarf,
-    HalfElf, // TODO: Not implemented
-    Gnome, // TODO: Not implemented
-    Halfling, // TODO: Not implemented
-    HalfOrc, // TODO: Not implemented
-    Human, // TODO: Not implemented
-    Tiefling, // TODO: Not implemented
+    HalfElf,    // TODO: Not implemented
+    Gnome,      // TODO: Not implemented
+    Halfling,   // TODO: Not implemented
+    HalfOrc,    // TODO: Not implemented
+    Human,      // TODO: Not implemented
+    Tiefling,   // TODO: Not implemented
     Dragonborn, // TODO: Not implemented
 }
 
@@ -64,18 +64,12 @@ impl Race {
                         (AbilityScoreOptions::Constitution.to_string(), 2),
                         (AbilityScoreOptions::Wisdom.to_string(), 1),
                     ]),
-                    resilience: vec![
-                        Resilience::Poison,
-                    ],
-                    proficiency: vec![
-                        proficiency
-                    ],
-                    unique: vec![
-                        Unique::DwarvenToughness,
-                    ]
+                    resilience: vec![Resilience::Poison],
+                    proficiency: vec![proficiency],
+                    unique: vec![Unique::DwarvenToughness],
                 };
                 race
-            },
+            }
             RaceSelection::MountainDwarf => {
                 let race = Race {
                     race_selection,
@@ -83,9 +77,7 @@ impl Race {
                         (AbilityScoreOptions::Constitution.to_string(), 2),
                         (AbilityScoreOptions::Strength.to_string(), 2),
                     ]),
-                    resilience: vec![
-                        Resilience::Poison,
-                    ],
+                    resilience: vec![Resilience::Poison],
                     proficiency: vec![
                         proficiency,
                         Proficiency::LightArmor,
@@ -94,7 +86,7 @@ impl Race {
                     unique: Vec::new(),
                 };
                 race
-            },
+            }
             _ => todo!("Not implemented."),
         }
     }

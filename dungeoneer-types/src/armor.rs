@@ -58,7 +58,12 @@ impl Armor {
             ArmorList::Padded => Armor {
                 name: "Padded".to_string(),
                 armor_type: ArmorType::LightArmor,
-                armor_class: ArmorClass { default: 11, dex_modifier: true, max_dex_modifier: None, ac_increment: None },
+                armor_class: ArmorClass {
+                    default: 11,
+                    dex_modifier: true,
+                    max_dex_modifier: None,
+                    ac_increment: None,
+                },
                 strength: None,
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(5)),
@@ -68,7 +73,12 @@ impl Armor {
             ArmorList::Leather => Armor {
                 name: "Leather".to_string(),
                 armor_type: ArmorType::LightArmor,
-                armor_class: ArmorClass { default: 11, dex_modifier: true, max_dex_modifier: None, ac_increment: None },
+                armor_class: ArmorClass {
+                    default: 11,
+                    dex_modifier: true,
+                    max_dex_modifier: None,
+                    ac_increment: None,
+                },
                 strength: None,
                 stealth_disadvantage: false,
                 cost: Some(Currency::gp_only(10)),
@@ -78,7 +88,12 @@ impl Armor {
             ArmorList::StuddedLeather => Armor {
                 name: "Studded Leather".to_string(),
                 armor_type: ArmorType::LightArmor,
-                armor_class: ArmorClass { default: 12, dex_modifier: true, max_dex_modifier: None, ac_increment: None },
+                armor_class: ArmorClass {
+                    default: 12,
+                    dex_modifier: true,
+                    max_dex_modifier: None,
+                    ac_increment: None,
+                },
                 strength: None,
                 stealth_disadvantage: false,
                 cost: Some(Currency::gp_only(45)),
@@ -89,7 +104,12 @@ impl Armor {
             ArmorList::Hide => Armor {
                 name: "Hide".to_string(),
                 armor_type: ArmorType::MediumArmor,
-                armor_class: ArmorClass { default: 12, dex_modifier: true, max_dex_modifier: Some(2), ac_increment: None },
+                armor_class: ArmorClass {
+                    default: 12,
+                    dex_modifier: true,
+                    max_dex_modifier: Some(2),
+                    ac_increment: None,
+                },
                 strength: None,
                 stealth_disadvantage: false,
                 cost: Some(Currency::gp_only(10)),
@@ -99,7 +119,12 @@ impl Armor {
             ArmorList::ChainShirt => Armor {
                 name: "Chain Shirt".to_string(),
                 armor_type: ArmorType::MediumArmor,
-                armor_class: ArmorClass { default: 13, dex_modifier: true, max_dex_modifier: Some(2), ac_increment: None },
+                armor_class: ArmorClass {
+                    default: 13,
+                    dex_modifier: true,
+                    max_dex_modifier: Some(2),
+                    ac_increment: None,
+                },
                 strength: None,
                 stealth_disadvantage: false,
                 cost: Some(Currency::gp_only(50)),
@@ -109,7 +134,12 @@ impl Armor {
             ArmorList::ScaleMail => Armor {
                 name: "Scale Mail".to_string(),
                 armor_type: ArmorType::MediumArmor,
-                armor_class: ArmorClass { default: 14, dex_modifier: true, max_dex_modifier: Some(2), ac_increment: None },
+                armor_class: ArmorClass {
+                    default: 14,
+                    dex_modifier: true,
+                    max_dex_modifier: Some(2),
+                    ac_increment: None,
+                },
                 strength: None,
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(50)),
@@ -119,7 +149,12 @@ impl Armor {
             ArmorList::SpikedArmor => Armor {
                 name: "Spiked Armor".to_string(),
                 armor_type: ArmorType::MediumArmor,
-                armor_class: ArmorClass { default: 14, dex_modifier: true, max_dex_modifier: Some(2), ac_increment: None },
+                armor_class: ArmorClass {
+                    default: 14,
+                    dex_modifier: true,
+                    max_dex_modifier: Some(2),
+                    ac_increment: None,
+                },
                 strength: None,
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(75)),
@@ -129,7 +164,12 @@ impl Armor {
             ArmorList::Breastplate => Armor {
                 name: "Breastplate".to_string(),
                 armor_type: ArmorType::MediumArmor,
-                armor_class: ArmorClass { default: 14, dex_modifier: true, max_dex_modifier: Some(2), ac_increment: None },
+                armor_class: ArmorClass {
+                    default: 14,
+                    dex_modifier: true,
+                    max_dex_modifier: Some(2),
+                    ac_increment: None,
+                },
                 strength: None,
                 stealth_disadvantage: false,
                 cost: Some(Currency::gp_only(400)),
@@ -139,7 +179,12 @@ impl Armor {
             ArmorList::Halfplate => Armor {
                 name: "Halfplate".to_string(),
                 armor_type: ArmorType::MediumArmor,
-                armor_class: ArmorClass { default: 15, dex_modifier: true, max_dex_modifier: Some(2), ac_increment: None },
+                armor_class: ArmorClass {
+                    default: 15,
+                    dex_modifier: true,
+                    max_dex_modifier: Some(2),
+                    ac_increment: None,
+                },
                 strength: None,
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(750)),
@@ -150,7 +195,12 @@ impl Armor {
             ArmorList::RingMail => Armor {
                 name: "Ring Mail".to_string(),
                 armor_type: ArmorType::HeavyArmor,
-                armor_class: ArmorClass { default: 14, dex_modifier: false, max_dex_modifier: None, ac_increment: None },
+                armor_class: ArmorClass {
+                    default: 14,
+                    dex_modifier: false,
+                    max_dex_modifier: None,
+                    ac_increment: None,
+                },
                 strength: None,
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(30)),
@@ -160,7 +210,12 @@ impl Armor {
             ArmorList::ChainMail => Armor {
                 name: "Chain Mail".to_string(),
                 armor_type: ArmorType::HeavyArmor,
-                armor_class: ArmorClass { default: 16, dex_modifier: false, max_dex_modifier: None, ac_increment: None },
+                armor_class: ArmorClass {
+                    default: 16,
+                    dex_modifier: false,
+                    max_dex_modifier: None,
+                    ac_increment: None,
+                },
                 strength: Some(13),
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(75)),
@@ -170,7 +225,12 @@ impl Armor {
             ArmorList::Splint => Armor {
                 name: "Splint".to_string(),
                 armor_type: ArmorType::HeavyArmor,
-                armor_class: ArmorClass { default: 17, dex_modifier: false, max_dex_modifier: None, ac_increment: None },
+                armor_class: ArmorClass {
+                    default: 17,
+                    dex_modifier: false,
+                    max_dex_modifier: None,
+                    ac_increment: None,
+                },
                 strength: Some(15),
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(200)),
@@ -180,7 +240,12 @@ impl Armor {
             ArmorList::Plate => Armor {
                 name: "Plate".to_string(),
                 armor_type: ArmorType::HeavyArmor,
-                armor_class: ArmorClass { default: 18, dex_modifier: false, max_dex_modifier: None, ac_increment: None },
+                armor_class: ArmorClass {
+                    default: 18,
+                    dex_modifier: false,
+                    max_dex_modifier: None,
+                    ac_increment: None,
+                },
                 strength: Some(15),
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(1500)),
@@ -191,13 +256,18 @@ impl Armor {
             ArmorList::Shield => Armor {
                 name: "Shield".to_string(),
                 armor_type: ArmorType::Shield,
-                armor_class: ArmorClass { default: 0, dex_modifier: false, max_dex_modifier: None, ac_increment: Some(2) },
+                armor_class: ArmorClass {
+                    default: 0,
+                    dex_modifier: false,
+                    max_dex_modifier: None,
+                    ac_increment: Some(2),
+                },
                 strength: Some(15),
                 stealth_disadvantage: true,
                 cost: Some(Currency::gp_only(1500)),
                 weight: Some(65.0),
                 equiped: false,
-            }
+            },
         };
         armor
     }
@@ -210,7 +280,7 @@ impl Armor {
         stealth_disadvantage: bool,
         cost: Option<Currency>,
         weight: Option<f64>,
-        equiped: bool
+        equiped: bool,
     ) -> Armor {
         Armor {
             name,

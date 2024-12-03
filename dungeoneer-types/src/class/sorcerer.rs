@@ -1,30 +1,34 @@
 use serde::{Deserialize, Serialize};
 
-use crate::{general::Dices, race::AbilityScoreOptions};
 use crate::class::SpellCaster;
+use crate::{general::Dices, race::AbilityScoreOptions};
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Sorcerer {
     pub class_level: u32,
     pub spell_slots: Vec<SpellSlots>,
     pub sorcery_points: Option<SorceryPoints>,
-    pub spells: Vec<Spell>
+    pub spells: Vec<Spell>,
 }
 
 impl SpellCaster<String> for Sorcerer {
     fn cast_spell(&mut self, spell_level: usize, cost: u8) -> Result<(), String> {
         if self.spell_slots.len() < spell_level {
-            return Err(format!("You do not have a level {} spell-slot.", spell_level));
-        }
-
-        if self.spell_slots[spell_level-1].available < cost {
             return Err(format!(
-                "You have {} free spell-slots, and that spell costs {}.",
-                self.spell_slots[spell_level-1].available, cost
+                "You do not have a level {} spell-slot.",
+                spell_level
             ));
         }
 
-        self.spell_slots[spell_level-1].update_spell_slots(cost);
+        if self.spell_slots[spell_level - 1].available < cost {
+            return Err(format!(
+                "You have {} free spell-slots, and that spell costs {}.",
+                self.spell_slots[spell_level - 1].available,
+                cost
+            ));
+        }
+
+        self.spell_slots[spell_level - 1].update_spell_slots(cost);
 
         Ok(())
     }
@@ -65,16 +69,25 @@ pub struct SorceryPoints {
 
 #[cfg(test)]
 mod tests {
-    use crate::{race::AbilityScoreOptions, class::SpellCaster};
-    use super::{Sorcerer, SpellSlots, Spell, Hit};
+    use super::{Hit, Sorcerer, Spell, SpellSlots};
+    use crate::{class::SpellCaster, race::AbilityScoreOptions};
 
     #[test]
     fn cast_spell_decrement_test() {
         let mut sorcer: Sorcerer = Sorcerer {
             class_level: 1,
-            spell_slots: vec![SpellSlots { available: 3, total: 3 }],
+            spell_slots: vec![SpellSlots {
+                available: 3,
+                total: 3,
+            }],
             sorcery_points: None,
-            spells: vec![ Spell { range: 20, hit: Hit { dc: Some((AbilityScoreOptions::Charisma, 15)), hit: None } } ]
+            spells: vec![Spell {
+                range: 20,
+                hit: Hit {
+                    dc: Some((AbilityScoreOptions::Charisma, 15)),
+                    hit: None,
+                },
+            }],
         };
 
         let _ = sorcer.cast_spell(1, 1);

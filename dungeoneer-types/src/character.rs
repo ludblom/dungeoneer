@@ -2,8 +2,8 @@ use chrono::Local;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
-use crate::race::Race;
 use crate::class::Class;
+use crate::race::Race;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Character {

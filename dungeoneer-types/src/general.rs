@@ -11,12 +11,12 @@ pub struct Currency {
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Dices {
-    pub d_four:    Option<i64>,
-    pub d_six:     Option<i64>,
-    pub d_eight:   Option<i64>,
-    pub d_ten:     Option<i64>,
-    pub d_twelve:  Option<i64>,
-    pub d_twenty:  Option<i64>,
+    pub d_four: Option<i64>,
+    pub d_six: Option<i64>,
+    pub d_eight: Option<i64>,
+    pub d_ten: Option<i64>,
+    pub d_twelve: Option<i64>,
+    pub d_twenty: Option<i64>,
     pub d_hundred: Option<i64>,
 }
 
@@ -29,23 +29,53 @@ pub struct AbilityRoll {
 
 impl Currency {
     pub fn pp_only(pp: i64) -> Currency {
-        Currency { pp, gp: 0, ep: 0, sp: 0, cp: 0 }
+        Currency {
+            pp,
+            gp: 0,
+            ep: 0,
+            sp: 0,
+            cp: 0,
+        }
     }
 
     pub fn gp_only(gp: i64) -> Currency {
-        Currency { pp: 0, gp, ep: 0, sp: 0, cp: 0 }
+        Currency {
+            pp: 0,
+            gp,
+            ep: 0,
+            sp: 0,
+            cp: 0,
+        }
     }
 
     pub fn ep_only(ep: i64) -> Currency {
-        Currency { pp: 0, gp: 0, ep, sp: 0, cp: 0 }
+        Currency {
+            pp: 0,
+            gp: 0,
+            ep,
+            sp: 0,
+            cp: 0,
+        }
     }
 
     pub fn sp_only(sp: i64) -> Currency {
-        Currency { pp: 0, gp: 0, ep: 0, sp, cp: 0 }
+        Currency {
+            pp: 0,
+            gp: 0,
+            ep: 0,
+            sp,
+            cp: 0,
+        }
     }
 
     pub fn cp_only(cp: i64) -> Currency {
-        Currency { pp: 0, gp: 0, ep: 0, sp: 0, cp }
+        Currency {
+            pp: 0,
+            gp: 0,
+            ep: 0,
+            sp: 0,
+            cp,
+        }
     }
 }
 

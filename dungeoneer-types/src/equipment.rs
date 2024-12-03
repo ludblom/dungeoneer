@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::{weapon::Weapon, general::Currency};
+use crate::{general::Currency, weapon::Weapon};
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Equipment {

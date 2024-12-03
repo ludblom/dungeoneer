@@ -1,4 +1,4 @@
-use dungeoneer_types::general::{Dices, AbilityRoll};
+use dungeoneer_types::general::{AbilityRoll, Dices};
 use rand::Rng;
 
 pub fn roll_dices(dices: Dices) -> i64 {
